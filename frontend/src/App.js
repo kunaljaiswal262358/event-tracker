@@ -74,10 +74,12 @@ const EventTrackerApp = () => {
 
   useEffect(() => {
     let token = Cookies.get("auth-token");
-    let user = jwtDecode(token);
-    if(user) {
-      setUser(user)
-      fetchEvents(user);
+    if(token) {
+      let user = jwtDecode(token);
+      if(user) {
+        setUser(user)
+        fetchEvents(user);
+      }
     }
   }, []);
 
