@@ -8,7 +8,7 @@ const eventRoutes = require("./routes/event");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "https://event-tracker-rose.vercel.app", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth/", authRoutes);

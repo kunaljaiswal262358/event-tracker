@@ -42,13 +42,16 @@ const EventTrackerApp = () => {
       fetchEvents(user);
       setShowAuthModal(false);
     } catch (err) {
-      const errMsg = err.response.data;
-      if (errMsg === "Invalid Email") setError({ ...error, email: errMsg });
-      if (errMsg === "Password mismatch")
-        setError({ ...error, password: errMsg });
-      if (errMsg.includes("duplicate key error"))
-        setError({ ...error, email: "Duplicate Email" });
-      console.log(errMsg);
+      console.log(err);
+      if(err?.response?.data) {
+        const errMsg = err.response.data;
+        if (errMsg === "Invalid Email") setError({ ...error, email: errMsg });
+        if (errMsg === "Password mismatch")
+          setError({ ...error, password: errMsg });
+        if (errMsg?.includes("duplicate key error"))
+          setError({ ...error, email: "Duplicate Email" });
+        console.log(errMsg);
+      }
     }
   };
 
